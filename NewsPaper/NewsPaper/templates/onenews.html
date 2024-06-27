@@ -1,0 +1,27 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+onenews
+{% endblock title %}
+
+{% block content %}
+<hr>
+   {% if onenews %}
+       <table>
+           <tr>
+               <td> Заголовок </td>
+               <td> Текст <br> </td>
+               <td> Дата публикации </td>
+           </tr>
+          <tr>
+
+               <td>{{ onenews.title|censor }}&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</td>
+               <td>{{ onenews.text|truncatewords:20|censor }}&nbsp; &nbsp;&nbsp;</td>
+               <td>{{ onenews.dateCreation|date:'d.m.Y' }}</td>
+
+           </tr>
+       </table>
+   {% endif %}
+{% endblock content %}
